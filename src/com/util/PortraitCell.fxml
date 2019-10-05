@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane fx:id="grid" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="386.0" minHeight="10.0" prefHeight="386.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="193.0" minHeight="10.0" prefHeight="83.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <ImageView fx:id="imagePost" fitHeight="100.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../external/icons/no-image-icon-15.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+         <children>
+            <VBox alignment="CENTER_LEFT" prefHeight="89.0" prefWidth="319.0" spacing="5.0">
+               <children>
+                  <Label fx:id="reactsLabel" opacity="0.5" text="0">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../external/icons/heart-outline-512.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Monospaced Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="commentsLabel" opacity="0.5" text="0">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../external/icons/chat-480.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Monospaced Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="25.0" />
+               </padding>
+            </VBox>
+            <VBox alignment="BOTTOM_RIGHT" prefHeight="89.0" prefWidth="369.0">
+               <children>
+                  <Label fx:id="dateLabel" nodeOrientation="RIGHT_TO_LEFT" opacity="0.5" text="01-04-2019">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../external/icons/133028-200.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Monospaced Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" right="25.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</GridPane>

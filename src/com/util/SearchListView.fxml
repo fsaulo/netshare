@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.util.SearchListController">
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER_RIGHT">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search">
+               <font>
+                  <Font name="Monospaced Regular" size="22.0" />
+               </font>
+            </Text>
+         </children>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <center>
+      <ListView fx:id="listUsers" prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding></ListView>
+   </center>
+</BorderPane>

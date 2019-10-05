@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="imagePost" fitHeight="260.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+   </center>
+   <bottom>
+      <HBox prefHeight="93.0" prefWidth="600.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER_LEFT" prefHeight="76.0" prefWidth="401.0" spacing="5.0">
+               <children>
+                  <Label fx:id="reactsLabel" opacity="0.5" text="0">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../external/icons/heart-outline-512.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Monospaced Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="commentsLabel" opacity="0.5" text="0">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../external/icons/chat-480.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Monospaced Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="30.0" />
+               </padding>
+            </VBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="76.0" prefWidth="406.0">
+               <children>
+                  <Label fx:id="dateLabel" nodeOrientation="RIGHT_TO_LEFT" opacity="0.5" text="2019-15-03">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../external/icons/133028-200.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Monospaced Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets right="30.0" />
+               </padding>
+            </HBox>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

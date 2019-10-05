@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.util.LoginController">
+   <right>
+      <HBox prefHeight="706.0" prefWidth="434.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="440.0" style="-fx-background-color: white;">
+               <children>
+                  <Text layoutX="109.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" style="color: white;" text="netshare">
+                     <font>
+                        <Font name="Monospaced Regular" size="46.0" />
+                     </font>
+                  </Text>
+                  <VBox alignment="TOP_CENTER" layoutX="2.0" layoutY="442.0" prefHeight="183.0" prefWidth="437.0" spacing="20.0">
+                     <children>
+                        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#initSession" opacity="0.8" prefHeight="26.0" prefWidth="194.0" text="Login">
+                           <font>
+                              <Font name="Monospaced Regular" size="13.0" />
+                           </font>
+                        </Button>
+                        <Hyperlink fx:id="forgotPasswordLink" opacity="0.6" text="Forgot password?" />
+                        <Hyperlink fx:id="registerLink" onAction="#showSignUp" prefHeight="24.0" prefWidth="242.0" text="Sign up">
+                           <font>
+                              <Font name="Monospaced Bold" size="13.0" />
+                           </font>
+                           <graphic>
+                              <Text opacity="0.6" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?">
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </Text>
+                           </graphic>
+                        </Hyperlink>
+                        <Line endX="163.0" opacity="0.2" startX="-67.0" />
+                     </children>
+                  </VBox>
+                  <VBox layoutX="47.0" layoutY="238.0" prefHeight="101.0" prefWidth="348.0" spacing="40.0">
+                     <children>
+                        <TextField fx:id="emailTextField" onAction="#onEnter" opacity="0.8" prefHeight="26.0" prefWidth="340.0" promptText="Email">
+                           <font>
+                              <Font name="Monospaced Regular" size="13.0" />
+                           </font>
+                        </TextField>
+                        <PasswordField fx:id="passwordTextField" onAction="#onEnter" opacity="0.8" prefHeight="26.0" prefWidth="340.0" promptText="Password" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets bottom="20.0" />
+                     </opaqueInsets>
+                  </VBox>
+                  <HBox alignment="TOP_CENTER" layoutX="-1.0" layoutY="675.0" prefHeight="25.0" prefWidth="443.0">
+                     <children>
+                        <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Netshare 2019. GPL v3.0" textAlignment="CENTER" wrappingWidth="204.31201171875">
+                           <font>
+                              <Font name="Monospaced Regular" size="12.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <Label fx:id="emailCheckLabel" layoutX="35.0" layoutY="246.0" prefHeight="16.0" prefWidth="24.0" textFill="#ff5959" />
+                  <Label fx:id="passwordCheckLabel" layoutX="35.0" layoutY="310.0" prefHeight="16.0" prefWidth="24.0" textFill="#ff5959" />
+                  <VBox alignment="CENTER" layoutX="59.0" layoutY="362.0" prefHeight="54.0" prefWidth="325.0">
+                     <children>
+                        <Label fx:id="successMessageLabel" textFill="#09bdc6">
+                           <font>
+                              <Font name="Monospaced Regular" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="checkFieldsLabel" textFill="#ff5959">
+                           <font>
+                              <Font name="Monospaced Regular" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </right>
+   <left>
+      <AnchorPane prefHeight="700.0" prefWidth="659.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="134.0" fitWidth="141.0" layoutX="96.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../external/icons/plane.png" />
+               </image>
+            </ImageView>
+            <VBox layoutX="96.0" layoutY="251.0" prefHeight="226.0" prefWidth="487.0" spacing="20.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Know us better" wrappingWidth="427.36181640625">
+                     <font>
+                        <Font name="Monospaced Bold" size="39.0" />
+                     </font>
+                  </Text>
+                  <Text opacity="0.79" strokeType="OUTSIDE" strokeWidth="0.0" text="Netshare is a concept of open source social media app with focus on privacy. " wrappingWidth="458.7294921875">
+                     <font>
+                        <Font name="Monospaced Regular" size="12.0" />
+                     </font></Text>
+                  <Text opacity="0.79" strokeType="OUTSIDE" strokeWidth="0.0" text="We will never steal your data." wrappingWidth="300.1572265625">
+                     <font>
+                        <Font name="Monospaced Regular" size="12.0" />
+                     </font></Text>
+                  <Text opacity="0.79" strokeType="OUTSIDE" strokeWidth="0.0" text="And will always be free. Forever." wrappingWidth="300.1572265625">
+                     <font>
+                        <Font name="Monospaced Regular" size="12.0" />
+                     </font></Text>
+                  <Text opacity="0.79" strokeType="OUTSIDE" strokeWidth="0.0" text="Our app is under GNU General Public License. It was build for academic porpuses." wrappingWidth="464.951171875">
+                     <font>
+                        <Font name="Monospaced Regular" size="12.0" />
+                     </font></Text>
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" layoutY="650.0" opacity="0.5" prefHeight="7.0" prefWidth="657.0" spacing="0.1">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="This is a fiction idealized piece of software. All copyrights you may have over any part of this app, feel free to contact me at meetnapoleon@prontomail.ch" wrappingWidth="534.62109375">
+                     <font>
+                        <Font name="Monospaced Regular" size="9.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <Hyperlink layoutX="57.0" layoutY="671.0" prefHeight="15.0" prefWidth="261.0" text="GitHub.">
+               <graphic>
+                  <Text opacity="0.52" strokeType="OUTSIDE" strokeWidth="0.0" text="Check our code at" wrappingWidth="92.951171875">
+                     <font>
+                        <Font name="Monospaced Regular" size="9.0" />
+                     </font>
+                  </Text>
+               </graphic>
+               <font>
+                  <Font name="Monospaced Regular" size="9.0" />
+               </font>
+            </Hyperlink>
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>

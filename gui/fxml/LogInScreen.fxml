@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.util.LoginController">
+   <right>
+      <HBox prefHeight="706.0" prefWidth="434.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane minHeight="700" minWidth="440" prefHeight="700.0" prefWidth="440.0" style="-fx-background-color: white;" HBox.hgrow="NEVER">
+               <children>
+                  <Button layoutX="123.0" layoutY="324.0" mnemonicParsing="false" onAction="#showSignUp" opacity="0.8" prefHeight="26.0" prefWidth="194.0" text="Login">
+                     <font>
+                        <Font name="Monospaced Regular" size="13.0" />
+                     </font></Button>
+                  <Text layoutX="109.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" style="color: white;" text="netshare">
+                     <font>
+                        <Font name="Monospaced Regular" size="46.0" />
+                     </font>
+                  </Text>
+                  <Hyperlink layoutX="155.0" layoutY="532.0" opacity="0.6" text="Forgot password?" />
+                  <Text layoutX="92.0" layoutY="471.0" opacity="0.6" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?">
+                     <font>
+                        <Font name="Monospaced Regular" size="13.0" />
+                     </font>
+                  </Text>
+                  <Hyperlink layoutX="264.0" layoutY="454.0" fx:id="registerLink" onMouseClicked="#showSignUp" prefHeight="24.0" prefWidth="77.0" text="Sign up">
+                     <font>
+                        <Font name="Monospaced Bold" size="13.0" />
+                     </font>
+                  </Hyperlink>
+                  <Line endX="163.0" layoutX="172.0" layoutY="578.0" opacity="0.2" startX="-67.0" />
+                  <VBox layoutX="-1.0" layoutY="221.0" prefHeight="98.0" prefWidth="441.0" spacing="20.0">
+                     <children>
+                        <TextField prefHeight="26.0" prefWidth="340.0" promptText="Email">
+                           <font>
+                              <Font name="Monospaced Regular" size="13.0" />
+                           </font>
+                        </TextField>
+                        <PasswordField prefHeight="26.0" prefWidth="340.0" promptText="Password">
+                           <font>
+                              <Font name="Monospaced Regular" size="13.0" />
+                           </font>
+                        </PasswordField>
+                     </children>
+                     <padding>
+                        <Insets left="40.0" right="40.0" />
+                     </padding>
+                  </VBox>
+                  <HBox alignment="TOP_CENTER" layoutX="-1.0" layoutY="675.0" prefHeight="25.0" prefWidth="443.0">
+                     <children>
+                        <Text opacity="0.48" strokeType="OUTSIDE" strokeWidth="0.0" text="Netshare 2019. GPL v3.0" textAlignment="CENTER" wrappingWidth="204.31201171875">
+                           <font>
+                              <Font name="Monospaced Regular" size="12.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </right>
+   <left>
+      <AnchorPane prefHeight="700.0" prefWidth="679.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="96.0" layoutY="500.0" opacity="0.79" strokeType="OUTSIDE" strokeWidth="0.0" text="Feel free to chek our code at" wrappingWidth="197.951171875" />
+            <Text layoutX="96.0" layoutY="452.0" opacity="0.79" strokeType="OUTSIDE" strokeWidth="0.0" text="Our app is under GNU General Public License. Was build for academic porpuses." wrappingWidth="464.951171875" />
+            <Text layoutX="96.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Know us better" wrappingWidth="427.36181640625">
+               <font>
+                  <Font name="Monospaced Bold" size="39.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="188.0" fitWidth="160.0" layoutX="96.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../external/icons/plane.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="96.0" layoutY="654.0" opacity="0.3" strokeType="OUTSIDE" strokeWidth="0.0" text="This is a fiction idealized piece of software. All copyrights you may have over any part of this app, feel free to" wrappingWidth="522.7294921875">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Text>
+            <Hyperlink layoutX="159.0" layoutY="650.0" opacity="0.6" prefHeight="17.0" prefWidth="145.0" text="meetnapoleon@protonmail.ch">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Hyperlink>
+            <Text layoutX="96.0" layoutY="662.0" opacity="0.3" strokeType="OUTSIDE" strokeWidth="0.0" text="contact me at ">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Text>
+            <VBox layoutX="96.0" layoutY="317.0" prefHeight="103.0" prefWidth="487.0" spacing="20.0">
+               <children>
+                  <Text opacity="0.79" strokeType="OUTSIDE" strokeWidth="0.0" text="Netsahre is a concept of open source social media app with focus on privacy. " wrappingWidth="458.7294921875" />
+                  <Text opacity="0.79" strokeType="OUTSIDE" strokeWidth="0.0" text="We will never steal your data." wrappingWidth="300.1572265625" />
+                  <Text opacity="0.79" strokeType="OUTSIDE" strokeWidth="0.0" text="And will always be free. Forever." wrappingWidth="300.1572265625" />
+               </children>
+            </VBox>
+            <Hyperlink layoutX="281.0" layoutY="483.0" prefHeight="24.0" prefWidth="73.0" text="GitHub." />
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>
