@@ -1,6 +1,7 @@
 package com.util;
 
 import com.var.PostVar;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,14 +15,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.FXML;
+
 import java.util.List;
 import java.util.ArrayList;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.sql.SQLException;
 import java.io.IOException;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;

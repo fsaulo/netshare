@@ -28,7 +28,6 @@ public class SearchListController {
 	private String list_type;
 
 	@FXML private ObservableList<UserVar> searchList = FXCollections.observableArrayList();
-
 	@FXML private ListView<UserVar> listUsers;
 
 	public void getList(String type, String criteria, int user_id, FeedController feed) {

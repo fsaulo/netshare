@@ -1,7 +1,7 @@
 package com.util;
 
 import com.var.UserVar;
-import java.time.LocalDate;
+
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,12 +19,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.event.Event;
 import javafx.event.ActionEvent;
 import javafx.application.Application;
+
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
-/**
- * @author fsaulo
- */
 public class SignUpController {
 
 	private UserVar userData = new UserVar();

@@ -1,7 +1,9 @@
 package com.etc;
 
 import com.var.UserVar;
+import com.util.LoggerHandler;
 import com.util.DBConnector;
+
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
@@ -9,11 +11,9 @@ import java.sql.Connection;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
-/**
- *
- * @author fsaulo
- */
 public class Login {
+    private static final Logger LOGGER = new
+        LoggerHandler(Login.class.getName()).getGenericConsoleLogger();
 
     Connection con = null;
     PreparedStatement ps = null;
@@ -28,7 +28,6 @@ public class Login {
      * @param UserVar
      */
     public UserVar userAuthentication(UserVar login) throws SQLException {
-
         String selectSQL = "select * from users where user_email = ? and user_password = ?";
         String updateSQL = "update users set user_status_session = ?, user_mode = ? where user_email = ?";
 
@@ -42,29 +41,26 @@ public class Login {
 
             rs = ps.executeQuery();
 
-            if (rs.next()) {
-
+            if (rs.next())
+            {
                 user = new UserVar();
-
                 user.setEmail(rs.getString("user_email"));
                 user.setUserId(rs.getInt("user_id"));
                 user.setStatusEmail(rs.getBoolean("user_status_email"));
                 user.setStatusSession(rs.getBoolean("user_status_session"));
                 user.setFirstName(rs.getString("user_first_name"));
 
-                if (user.isStatusSession()) {
-
-                    System.out.printf("User %s already started session\n", user.getEmail());
+                if (user.isStatusSession())
+                {
+                    LOGGER.warning("User " + user.getEmail() + " already started a session");
                     return user;
-
                 }
             }
 
-            else {
-
-                System.out.println("email or password are incorrect");
+            else
+            {
+                LOGGER.info("Email or password provided doesn't match");
                 return login;
-
             }
 
             if (!(user.isStatusSession())) {

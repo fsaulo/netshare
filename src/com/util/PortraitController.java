@@ -2,7 +2,7 @@ package com.util;
 
 import com.var.PostVar;
 import com.var.UserVar;
-import java.time.LocalDate;
+
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,12 +22,14 @@ import javafx.stage.Modality;
 import javafx.scene.Node;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import java.util.List;
-import java.util.ArrayList;
 import javafx.event.Event;
 import javafx.event.ActionEvent;
 import javafx.application.Application;
+
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.ArrayList;
 import java.sql.SQLException;
 
 /**
@@ -42,12 +44,10 @@ public class PortraitController {
 	private List<PostVar> posts = new ArrayList<>();
 
 	@FXML private Stage primaryStage;
-
 	@FXML private Label nameLabel;
 	@FXML private Label followersCount;
 	@FXML private Label followingCount;
 	@FXML private Label postsCount;
-
 	@FXML private ListView<PostVar> listPosts;
 	@FXML private ObservableList<PostVar> postsList = FXCollections.observableArrayList();
 

@@ -1,7 +1,14 @@
 package com.etc;
 
-import com.var.*;
-import com.util.DBConnector;
+import com.var.CommentVar;
+import com.var.FeedVar;
+import com.var.FollowerVar;
+import com.var.InteractionVar;
+import com.var.PostVar;
+import com.var.ReactVar;
+import com.var.UserVar;
+import com.var.util.DBConnector;
+
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;

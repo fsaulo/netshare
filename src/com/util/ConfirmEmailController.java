@@ -1,6 +1,7 @@
 package com.util;
 
 import com.var.UserVar;
+
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.event.Event;
 import javafx.scene.Node;
 import javafx.event.ActionEvent;
+
 import java.io.IOException;
 import java.sql.SQLException;
 
