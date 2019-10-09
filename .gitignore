@@ -26,3 +26,5 @@ build/
 *.rar
 *.mwb
 
+# Temporary files
+*.swp
