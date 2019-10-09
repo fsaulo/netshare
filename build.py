@@ -2,26 +2,24 @@
 
 import sys, os
 
-menu_actions  = {}
-
-# =======================
-#     MENUS FUNCTIONS
-# =======================
+info = ('Netshare  Copyright (C) 2019  Saulo G. Felix\n'
+       'This program comes with ABSOLUTELY NO WARRANTY.\n'
+       'This is free software, and you are welcome to redistribute it.\n')
 
 def main_menu():
-    os.system('clear')
+    print(info)
+    print("1. Compile & execute")
+    print("2. Execute")
+    print("3. Print modules")
+    print("4. Update")
+    print("5. Debug")
 
-    print("TreeSGDB\n")
-    print("1. Compilar e executar")
-    print("2. Executar")
-    print("\n0. Sair")
+    print("\n0. Exit")
     choice = input(">> ")
     exec_menu(choice)
-
     return
 
 def exec_menu(choice):
-    os.system('clear')
     ch = choice.lower()
     if ch == '':
         menu_actions['main_menu']()
@@ -29,46 +27,39 @@ def exec_menu(choice):
         try:
             menu_actions[ch]()
         except KeyError:
-            print("Invalid selection, please try again.\n")
-    return
-
-def compile_execute():
-    print("Compilando...")
-    os.system('javac --module-path $PATH_TO_FX --add-modules=javafx.controls,javafx.fxml @build/source -d build/bin')
-    execute()
+            print("Builder: Invalid selection, please try again.\n")
     return
 
 def execute():
-    print('Executando aplicação...')
-    os.system('java -cp .:$MYSQL:build/bin --module-path $PATH_TO_FX --add-modules=javafx.controls,javafx.fxml com.sys.Main') 
-    exit()
-    return
+    print('Builder: Executing application...')
+    os.system('java -cp .:$MYSQL:build/bin --module-path $PATH_TO_FX --add-modules=javafx.controls,javafx.fxml com.sys.Main')
+    exit_program()
 
-def back():
-    menu_actions['main_menu']()
+def compile_execute():
+    print("Builder: Compiling...")
+    os.system('javac --module-path $PATH_TO_FX --add-modules=javafx.controls,javafx.fxml @build/source/src -d build/bin')
+    execute()
 
-# exit program
-def exit():
-    sys.exit()
+def print_modules():
+    os.system('cat build/source/src')
 
-# =======================
-#    MENUS DEFINITIONS
-# =======================
+def update():
+    os.system('find src/ -type f -name *.java > build/source/src')
 
-# Menu definition
+def debug():
+    os.system('javac -verbose --module-path $PATH_TO_FX --add-modules=javafx.controls,javafx.fxml @build/source/src -d build/bin')
+    execute()
+
+def exit_program():
+    sys.exit(0)
+
 menu_actions = {
-    'main_menu': main_menu,
     '1': compile_execute,
     '2': execute,
-    '9': back,
-    '0': exit,
+    '3': print_modules,
+    '4': update,
+    '0': exit_program,
 }
 
-# =======================
-#      MAIN PROGRAM
-# =======================
-
-# Main Program
 if __name__ == "__main__":
-    # Launch main menu
     main_menu()
