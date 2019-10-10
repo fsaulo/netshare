@@ -1,6 +1,7 @@
 package com.util;
 
 import com.var.UserVar;
+
 import javafx.event.Event;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
@@ -14,24 +15,27 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
+
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /**
  * @author fsaulo
  */
-public class LoginController {
+public class LoginController
+{
+	private static final Logger LOGGER =
+		new LoggerHandler(Login.class.getName()).getGenericConsoleLogger();
 
 	private UserVar session = new UserVar();
 	private UserController userController = new UserController();
 
 	@FXML private Stage primaryStage;
-
 	@FXML private Button loginButton;
-
 	@FXML private TextField emailTextField;
 	@FXML private TextField passwordTextField;
-
 	@FXML private Label emailCheckLabel;
 	@FXML private Label passwordCheckLabel;
 	@FXML private Label checkFieldsLabel;
@@ -40,10 +44,14 @@ public class LoginController {
 	/**
 	 * submit request on enter typed
 	 */
-	public void onEnter(ActionEvent event) throws SQLException, IOException {
-		try {
+	public void onEnter(ActionEvent event) throws SQLException, IOException
+	{
+		try
+		{
 			initSession(event);
-		} catch (SQLException ex) {
+		}
+		catch (SQLException ex)
+		{
 			throw new IOException(ex);
 		}
 	}
@@ -53,7 +61,8 @@ public class LoginController {
 	 * methods condensed for convenience.
 	 * puts a text in label.
 	 */
-	public void setLabelMessage(Label label, String message) {
+	public void setLabelMessage(Label label, String message)
+	{
 		label.setText(message);
 	}
 
@@ -61,93 +70,102 @@ public class LoginController {
 	 * changes status of user_status_session
 	 * to true if email and password matches.
 	 */
-	public void initSession(ActionEvent event) throws SQLException, IOException {
-
+	public void initSession(ActionEvent event) throws SQLException, IOException
+	{
 		// provides a method non orthodox to
 	    // verify that all fields are filled before
 	    // submitting any request to database.
 		String message = "* password and email are required";
 		String logged = "user logged with success";
 		String error = "password or email are incorrect";
+
 		boolean confirmStatus = false;
 		int itensVerified = 0;
 
-		if (emailTextField.getText().equals("")) {
+		if (emailTextField.getText().equals(""))
+		{
 			setLabelMessage(emailCheckLabel, "*");
 			setLabelMessage(checkFieldsLabel, message);
-		} else {
+		}
+		else
+		{
 			setLabelMessage(emailCheckLabel, "");
 			itensVerified++;
 		}
 
-		if (passwordTextField.getText().equals("")) {
+		if (passwordTextField.getText().equals(""))
+		{
 			setLabelMessage(passwordCheckLabel, "*");
 			setLabelMessage(checkFieldsLabel, message);
-		} else {
+		}
+		else
+		{
 			setLabelMessage(passwordCheckLabel, "");
 			itensVerified++;
 		}
 
-		if (itensVerified == 2) {
+		if (itensVerified == 2)
+		{
 			confirmStatus = true;
 			setLabelMessage(checkFieldsLabel, "");
-		} else itensVerified = 0;
+		}
+		else itensVerified = 0;
 
 		// checks if all required fields
 		// were provided.
-		if (confirmStatus) {
-
+		if (confirmStatus)
+		{
 			session.setEmail(emailTextField.getText());
 			session.setPassword(passwordTextField.getText());
-
-			try {
-
+			try
+			{
 				// holds null point exception if session
 				// was not validated.
 				session = userController.startSession(session);
 
-				if (session.isStatusSession()) {
-
+				if (session.isStatusSession())
+				{
 					// if email and password matches database,
 					// but user didn't provide email confirmation,
 					// it redirects to confirm stage.
-					if (session.isStatusEmail() == false) {
-						try {
+					if (session.isStatusEmail() == false)
+					{
+						try
+						{
 							showConfirmScreen(event);
-						} catch (IOException ex) {
+						}
+						catch (IOException ex)
+						{
 							throw new SQLException(ex);
 						}
 					}
 					else {
-
-						//TODO redirect user to feed stage
 						setLabelMessage(successMessageLabel, logged);
 
-						try {
+						try
+						{
 							showFeed(event);
-						} catch (IOException ex) {
+						}
+						catch (IOException ex)
+						{
 							throw new SQLException(ex);
 						}
 					}
 				}
-
-				else {
+				else
+				{
 					setLabelMessage(checkFieldsLabel, error);
 				}
 			}
-
-			catch(SQLException ex) {
+			catch(SQLException ex)
+			{
 				throw new IOException(ex);
 			}
 		}
 	}
 
-	/**
-	 * jump to confirm screen if, after login,
-	 * user email isn't already verified.
-	 */
-	public void showConfirmScreen(ActionEvent e) throws IOException {
-
+	public void showConfirmScreen(ActionEvent e) throws IOException
+	{
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("../../src/com/util/ConfirmEmailScreen.fxml"));
 
@@ -164,16 +182,14 @@ public class LoginController {
 		confirmEmailPane.setScene(confirmEmailScene);
 		confirmEmailPane.setResizable(false);
 		confirmEmailPane.show();
-
 	}
 
 	/**
-	 * this event was designed to switch
-	 * between the login pane and sign up page
-	 * throught the hyperlink
+	 * This event was designed to switch between the login pane and sign up page
+	 * throught the hyperlink.
 	 */
-	public void showSignUp(ActionEvent e) throws IOException {
-
+	public void showSignUp(ActionEvent e) throws IOException
+	{
 		Parent root = FXMLLoader.load(getClass().getResource("../../src/com/util/SignUpScreen.fxml"));
 		Scene window = new Scene(root, 400, 700);
 		primaryStage = (Stage)((Node)e.getSource()).getScene().getWindow();
@@ -183,12 +199,8 @@ public class LoginController {
 
 	}
 
-
-	/**
-	 * jump to feed screen after login
-	 */
-	public void showFeed(ActionEvent e) throws SQLException, IOException {
-
+	public void showFeed(ActionEvent e) throws SQLException, IOException
+	{
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("../../src/com/util/FeedScreen.fxml"));
 
@@ -200,19 +212,21 @@ public class LoginController {
 		FeedController controller = loader.getController();
 		controller.initializeUserData(session);
 
-		// this line gets the stage information.
 		primaryStage = (Stage)((Node)e.getSource()).getScene().getWindow();
 		primaryStage.setScene(window);
 		primaryStage.setResizable(false);
 		primaryStage.show();
 
-		// this lambda expression handles the
-		// logout method in case user ends
+		// this lambda expression handles the logout method in case user ends
 		// the program through default window event
-		primaryStage.setOnHiding(event -> {
-			try {
+		primaryStage.setOnHiding(event ->
+		{
+			try
+			{
 				userController.endSession(session.getUserId());
-			} catch (SQLException ex) {
+			}
+			catch (SQLException ex)
+			{
 				System.out.println(ex.getMessage());
 			}
 		});

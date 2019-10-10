@@ -21,24 +21,21 @@ public class Login {
     UserVar user = null;
 
     /**
-     * checks if user exists in database
-     * and if email and password matches
-     * if so, it checks whether user has
-     * confirmed email.
+     * checks if user exists in database and if email and password matches
+     * if so, it checks whether user has confirmed email.
      * @param UserVar
      */
     public UserVar userAuthentication(UserVar login) throws SQLException {
         String selectSQL = "select * from users where user_email = ? and user_password = ?";
         String updateSQL = "update users set user_status_session = ?, user_mode = ? where user_email = ?";
 
-        try {
-
+        try
+        {
+            LOGGER.info("Attempt to login.")
             con = DBConnector.getConnection();
             ps = con.prepareStatement(selectSQL);
-
             ps.setString(1, login.getEmail());
             ps.setString(2, login.getPassword());
-
             rs = ps.executeQuery();
 
             if (rs.next())
@@ -63,26 +60,21 @@ public class Login {
                 return login;
             }
 
-            if (!(user.isStatusSession())) {
-
-                System.out.println("validating session...");
-
-                if (user.isStatusEmail()) {
-
+            if (!(user.isStatusSession()))
+            {
+                LOGGER.info("Trying to validate session...")
+                if (user.isStatusEmail())
+                {
                     user.setStatusSession(true);
                     user.setUserMode(1);
-                    System.out.printf("%s logged with success.\n", user.getFirstName());
-
+                    LOGGER.info("User " + user.getEmail() + " logged successfully")
                 }
 
-                else {
-
+                else
+                {
                     user.setStatusSession(true);
                     user.setUserMode(4);
-                    System.out.printf("Email registered in our database: %s\n", user.getEmail());
-                    System.out.printf("Your email must be confirmed, " + "please check your mail box\n");
-                    System.out.println(user.isStatusEmail());
-
+                    LOGGER.info("Email not confirmed. Session status: " + user.isStatusSession());
                 }
 
                 ps = con.prepareStatement(updateSQL);
@@ -90,28 +82,26 @@ public class Login {
                 ps.setInt(2, user.getUserMode());
                 ps.setString(3, user.getEmail());
                 ps.executeUpdate();
-
                 return user;
             }
 
-            else {
-
+            else
+            {
                 System.out.printf("User %s already logged in.\n", user.getFirstName());
                 return user;
-
             }
         }
 
-        catch(SQLException ex) {
+        catch(SQLException ex)
+        {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        finally {
-
+        finally
+        {
             if (con != null) con.close();
             if (ps != null) ps.close();
             if (rs != null) rs.close();
-
         }
         return login;
     }
