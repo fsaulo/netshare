@@ -7,7 +7,7 @@ import com.var.InteractionVar;
 import com.var.PostVar;
 import com.var.ReactVar;
 import com.var.UserVar;
-import com.var.util.DBConnector;
+import com.util.DBConnector;
 
 import java.sql.SQLException;
 import java.sql.ResultSet;
