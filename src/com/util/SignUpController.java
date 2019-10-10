@@ -209,9 +209,7 @@ public class SignUpController {
 		// the program through default window event
 		primaryStage.setOnHiding(event -> {
 			try {
-				System.out.println("Logging out...");
 				userController.endSession(userData.getUserId());
-				System.out.println("program closed");
 			} catch (SQLException ex) {
 				System.out.println(ex.getMessage());
 			}

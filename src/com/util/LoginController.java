@@ -21,13 +21,10 @@ import java.sql.SQLException;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
-/**
- * @author fsaulo
- */
 public class LoginController
 {
 	private static final Logger LOGGER =
-		new LoggerHandler(Login.class.getName()).getGenericConsoleLogger();
+		new LoggerHandler(LoginController.class.getName()).getGenericConsoleLogger();
 
 	private UserVar session = new UserVar();
 	private UserController userController = new UserController();
@@ -41,9 +38,6 @@ public class LoginController
 	@FXML private Label checkFieldsLabel;
 	@FXML private Label successMessageLabel;
 
-	/**
-	 * submit request on enter typed
-	 */
 	public void onEnter(ActionEvent event) throws SQLException, IOException
 	{
 		try
@@ -56,20 +50,11 @@ public class LoginController
 		}
 	}
 
-	/**
-	 * function frequently called at most
-	 * methods condensed for convenience.
-	 * puts a text in label.
-	 */
 	public void setLabelMessage(Label label, String message)
 	{
 		label.setText(message);
 	}
 
-	/**
-	 * changes status of user_status_session
-	 * to true if email and password matches.
-	 */
 	public void initSession(ActionEvent event) throws SQLException, IOException
 	{
 		// provides a method non orthodox to
@@ -219,15 +204,11 @@ public class LoginController
 
 		// this lambda expression handles the logout method in case user ends
 		// the program through default window event
-		primaryStage.setOnHiding(event ->
-		{
-			try
-			{
+		primaryStage.setOnHiding(event -> {
+			try {
 				userController.endSession(session.getUserId());
-			}
-			catch (SQLException ex)
-			{
-				System.out.println(ex.getMessage());
+			} catch (SQLException ex) {
+				LOGGER.severe(ex.getMessage());
 			}
 		});
 	}

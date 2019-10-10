@@ -30,12 +30,15 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 import java.sql.SQLException;
 
 /**
  * @author fsaulo
  */
 public class PortraitController {
+	private static final Logger LOGGER =
+		new LoggerHandler(PortraitController.class.getName()).getGenericConsoleLogger();
 
 	private UserVar currentSession;
 	private UserVar currentPortrait;
@@ -55,18 +58,18 @@ public class PortraitController {
 	 * this method accepts a user to initialize the view
 	 * @param UseVar
 	 */
-	public void initializeUserData(UserVar user, UserVar portrait) throws SQLException {
-
+	public void initializeUserData(UserVar user, UserVar portrait) throws SQLException
+	{
 		currentSession = user;
 		currentPortrait = portrait;
 
 		int userId = currentPortrait.getUserId();
 		int count = 0;
 
-		try {
-
+		try
+		{
+			LOGGER.info("Trying to fetch user data");
 			posts = userController.getPortrait(portrait.getUserId());
-
 			nameLabel.setText(currentPortrait.getFirstName());
 			postsCount.setText("0"+Integer.toString(userController.howManyPosts(userId)));
 			followersCount.setText("0"+Integer.toString(userController.howManyFollowers(userId)));
@@ -82,15 +85,15 @@ public class PortraitController {
 			listPosts.setCellFactory(event -> new PortraitListCell(currentPortrait.getUserId(), this.post));
 
 		} catch (SQLException ex) {
-			System.out.println(ex.getMessage());
+			LOGGER.severe(ex.getMessage());
 		}
 	}
 
 	/**
 	 * jump to feed screen
 	 */
-	public void showFeed(ActionEvent e) throws SQLException, IOException {
-
+	public void showFeed(ActionEvent e) throws SQLException, IOException
+	{
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("../../src/com/util/FeedScreen.fxml"));
 
@@ -111,17 +114,21 @@ public class PortraitController {
 		// this lambda expression handles the
 		// logout method in case user ends
 		// the program through default window event
-		primaryStage.setOnHiding(event -> {
-			try {
+		primaryStage.setOnHiding(event ->
+		{
+			try
+			{
 				userController.endSession(currentSession.getUserId());
-			} catch (SQLException ex) {
-				System.out.println(ex.getMessage());
+			}
+			catch (SQLException ex)
+			{
+				LOGGER.severe(ex.getMessage());
 			}
 		});
 	}
 
-	public void showSearchList(ActionEvent e) throws IOException {
-
+	public void showSearchList(ActionEvent e) throws IOException
+	{
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("../../src/com/util/SearchListView.fxml"));
 		BorderPane searchList = loader.load();
@@ -134,6 +141,5 @@ public class PortraitController {
 		Scene window = new Scene(searchList);
 		dialogStage.setScene(window);
 		dialogStage.showAndWait();
-
 	}
 }

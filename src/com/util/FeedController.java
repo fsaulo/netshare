@@ -23,13 +23,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import java.sql.SQLException;
 import java.net.MalformedURLException;
 
-/**
- * @author fsaulo
- */
-public class FeedController {
+public class FeedController
+{
+	private static final Logger LOGGER =
+		new LoggerHandler(FeedController.class.getName()).getGenericConsoleLogger();
 
 	private UserVar currentSession;
 	private UserController userController;
@@ -40,10 +41,8 @@ public class FeedController {
 	@FXML private Parent root;
 	@FXML private BorderPane postPane;
 	@FXML private Scene window;
-
 	@FXML private Stage primaryStage;
 	@FXML private Stage dialogStage;
-
 	@FXML private Button logoutButton;
 	@FXML private Button settingsButton;
 	@FXML private Button followerButton;
@@ -51,15 +50,12 @@ public class FeedController {
 	@FXML private Button newPostButton;
 	@FXML private Button confirmPostButton;
 	@FXML private Button cancelButton;
-
 	@FXML private Label nameLabel;
 	@FXML private Label followersCount;
 	@FXML private Label followingCount;
 	@FXML private Label postsCount;
 	@FXML private Label fileSelected;
-
 	@FXML private ScrollPane feedScrollPane;
-
 	@FXML private TextField searchText;
 
 	@FXML FXMLLoader loader;
@@ -157,7 +153,7 @@ public class FeedController {
 		// the program through default window event
 		primaryStage.setOnHiding(event -> {
 			try {
-				System.out.println("Logging out...");
+				LOGGER.info("Logging out");
 				userController.endSession(profileUser.getUserId());
 				System.out.println("program closed");
 			} catch (SQLException ex) {
@@ -258,10 +254,5 @@ public class FeedController {
 		dialogStage.setScene(window);
 		dialogStage.setAlwaysOnTop(true);
 		dialogStage.show();
-
-		dialogStage.setOnHidden(event -> {
-			// closeStage(e);
-		});
-
 	}
 }

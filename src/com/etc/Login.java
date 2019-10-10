@@ -31,7 +31,6 @@ public class Login {
 
         try
         {
-            LOGGER.info("Attempt to login.")
             con = DBConnector.getConnection();
             ps = con.prepareStatement(selectSQL);
             ps.setString(1, login.getEmail());
@@ -49,7 +48,7 @@ public class Login {
 
                 if (user.isStatusSession())
                 {
-                    LOGGER.warning("User " + user.getEmail() + " already started a session");
+                    LOGGER.warning("User already started a session");
                     return user;
                 }
             }
@@ -62,12 +61,12 @@ public class Login {
 
             if (!(user.isStatusSession()))
             {
-                LOGGER.info("Trying to validate session...")
+                LOGGER.info("Trying to validate session...");
                 if (user.isStatusEmail())
                 {
                     user.setStatusSession(true);
                     user.setUserMode(1);
-                    LOGGER.info("User " + user.getEmail() + " logged successfully")
+                    LOGGER.info("User logged successfully.");
                 }
 
                 else
@@ -87,7 +86,7 @@ public class Login {
 
             else
             {
-                System.out.printf("User %s already logged in.\n", user.getFirstName());
+                LOGGER.warning("User already logged in.");
                 return user;
             }
         }

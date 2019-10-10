@@ -2,6 +2,7 @@ package com.etc;
 
 import com.var.UserVar;
 import com.util.DBConnector;
+import com.util.LoggerHandler;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -10,15 +11,13 @@ import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author fsaulo
- */
 public class Logout {
+	private static final Logger LOGGER =
+		new LoggerHandler(Logout.class.getName()).getGenericConsoleLogger();
 
-Connection con = null;
-PreparedStatement ps = null;
-ResultSet rs = null;
+	private Connection con = null;
+	private PreparedStatement ps = null;
+	private ResultSet rs = null;
 
 	public void exitSystem(UserVar session) throws SQLException
 	{
@@ -29,13 +28,12 @@ ResultSet rs = null;
 		{
 			con = DBConnector.getConnection();
 			ps = con.prepareStatement(selectSQL);
-
 			ps.setInt(1, session.getUserId());
-
 			rs = ps.executeQuery();
 
 			if (rs.next())
 			{
+				LOGGER.info("Attempt to logout.");
 				session.setStatusSession(rs.getBoolean("user_status_session"));
 				ps = con.prepareStatement(updateSQL);
 
@@ -44,8 +42,6 @@ ResultSet rs = null;
 					session.setStatusSession(false);
 					ps.setBoolean(1, session.isStatusSession());
 					ps.setInt(2, session.getUserId());
-
-					System.out.println("Logging out...");
 				}
 
 				else
@@ -53,16 +49,16 @@ ResultSet rs = null;
 					ps.setBoolean(1, session.isStatusSession());
 					ps.setInt(2, session.getUserId());
 
-					System.out.println("Exiting...");
+					LOGGER.info("Exiting...");
 					System.exit(0);
-
 				}
 
 				ps.executeUpdate();
 			}
 		}
 
-		catch (SQLException ex) {
+		catch (SQLException ex)
+		{
 			Logger.getLogger(Logout.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
