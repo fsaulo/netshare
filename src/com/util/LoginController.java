@@ -23,8 +23,13 @@ import java.util.logging.Level;
 
 public class LoginController
 {
-	private static final Logger LOGGER =
-		new LoggerHandler(LoginController.class.getName()).getGenericConsoleLogger();
+	private Logger LOGGER = null;
+
+	public LoginController ()
+	{
+		LOGGER = new LoggerHandler
+			(LoginController.class.getName()).getGenericConsoleLogger();
+	}
 
 	private UserVar session = new UserVar();
 	private UserController userController = new UserController();
@@ -107,7 +112,7 @@ public class LoginController
 				// holds null point exception if session
 				// was not validated.
 				session = userController.startSession(session);
-
+				
 				if (session.isStatusSession())
 				{
 					// if email and password matches database,
@@ -117,6 +122,7 @@ public class LoginController
 					{
 						try
 						{
+							LOGGER.info("Opening confirmation screen...");
 							showConfirmScreen(event);
 						}
 						catch (IOException ex)
@@ -151,21 +157,26 @@ public class LoginController
 
 	public void showConfirmScreen(ActionEvent e) throws IOException
 	{
+		LOGGER.info("Loading FXML modules...");
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../../src/com/util/ConfirmEmailScreen.fxml"));
+		loader.setLocation(getClass().getResource("../../src/com/util/ConfirmScreen.fxml"));
 
 		Parent confirmEmailScreen = loader.load();
 		Scene confirmEmailScene = new Scene(confirmEmailScreen, 575, 350);
 
 		// access the controller and give to it an instance
 		// of the user we just created.
+		LOGGER.info("Aquiring controller...");
 		ConfirmEmailController controller = loader.getController();
+		LOGGER.info("Initializing user data...");
 		controller.initializeUserData(session);
 
 		// this line gets the stage information.
+		LOGGER.info("Getting node stage...");
 		Stage confirmEmailPane = (Stage)((Node)e.getSource()).getScene().getWindow();
 		confirmEmailPane.setScene(confirmEmailScene);
 		confirmEmailPane.setResizable(false);
+		LOGGER.info("Showing confirmation screen...");
 		confirmEmailPane.show();
 	}
 

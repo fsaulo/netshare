@@ -20,7 +20,7 @@ public class LoggerHandler {
 
     loggerObject = Logger.getLogger(referenceToClass);
 
-    console.setLevel(Level.CONFIG);
+    console.setLevel(Level.ALL);
     console.setFormatter(format);
     loggerObject.addHandler(console);
     return loggerObject;
