@@ -32,7 +32,7 @@ def exec_menu(choice):
 
 def execute():
     print('Builder: Executing application...')
-    os.system('java -cp .:$MYSQL:build/bin --module-path $PATH_TO_FX --add-modules=javafx.controls,javafx.fxml com.sys.Main')
+    os.system('java -Xms250M -cp .:$MYSQL:build/bin --module-path $PATH_TO_FX --add-modules=javafx.controls,javafx.fxml com.sys.Main')
     exit_program()
 
 def compile_execute():
