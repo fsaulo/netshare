@@ -112,7 +112,7 @@ public class LoginController
 				// holds null point exception if session
 				// was not validated.
 				session = userController.startSession(session);
-				
+
 				if (session.isStatusSession())
 				{
 					// if email and password matches database,
@@ -159,7 +159,7 @@ public class LoginController
 	{
 		LOGGER.info("Loading FXML modules...");
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../../src/com/util/ConfirmScreen.fxml"));
+		loader.setLocation(getClass().getResource("../../src/com/util/ConfirmEmailScreen.fxml"));
 
 		Parent confirmEmailScreen = loader.load();
 		Scene confirmEmailScene = new Scene(confirmEmailScreen, 575, 350);
