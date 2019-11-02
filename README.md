@@ -100,7 +100,7 @@ C\:> TODO
 
 ```
 
-![Login Screenshot](https://raw.githubusercontent.com/fsaulo/netshare/master/external/readme/Screenshot%20from%202019-03-24%2015-23-52.png)
+![Login Screenshot](https://raw.githubusercontent.com/fsaulo/netshare/master/resources/images/netshare_main_screen.png)
 
 ## Discussion
 

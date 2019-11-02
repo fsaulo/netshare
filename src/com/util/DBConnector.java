@@ -25,10 +25,7 @@ public class DBConnector {
 		driver = "com.mysql.cj.jdbc.Driver";
 		url = "jdbc:mysql://localhost:3306/netshare?useSSL=false";
 		username = "root";
-		password = "b7T2J!@mm9";
-		// url = "jdbc:mysql://179.105.185.227/netshare?useSSL=false";
-		// username = "netshare.admin";
-		// password = "7H3!CJfXJ%PkTWV2";
+		password = "";
 
 		try {
 
