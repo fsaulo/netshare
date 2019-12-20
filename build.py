@@ -45,6 +45,7 @@ def print_modules():
 
 def update():
     os.system('find src/ -type f -name *.java > build/source/src')
+    os.system('find src/ -type f -name *.fxml -exec cp {} build/bin/com/util \;')
 
 def debug():
     os.system('javac -verbose --module-path $PATH_TO_FX --add-modules=javafx.controls,javafx.fxml @build/source/src -d build/bin')
