@@ -77,7 +77,7 @@
       <AnchorPane prefHeight="700.0" prefWidth="679.0" BorderPane.alignment="CENTER">
          <children>
             <Text layoutX="96.0" layoutY="500.0" opacity="0.79" strokeType="OUTSIDE" strokeWidth="0.0" text="Feel free to chek our code at" wrappingWidth="197.951171875" />
-            <Text layoutX="96.0" layoutY="452.0" opacity="0.79" strokeType="OUTSIDE" strokeWidth="0.0" text="Our app is under GNU General Public License. Was build for academic porpuses." wrappingWidth="464.951171875" />
+            <Text layoutX="96.0" layoutY="452.0" opacity="0.79" strokeType="OUTSIDE" strokeWidth="0.0" text="Our app is under GNU General Public License. It was built for academic purposes." wrappingWidth="464.951171875" />
             <Text layoutX="96.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Know us better" wrappingWidth="427.36181640625">
                <font>
                   <Font name="Monospaced Bold" size="39.0" />
